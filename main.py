@@ -13,10 +13,15 @@ if __name__ == '__main__':
         
     def processServiceOrder(data):
         print("Processing Service Order")
-        validateServiceOrder(data)
+        if validateServiceOrder(data):
+            acknowledgeServiceOrder()
+            
+            inProgressOrder(data)
         
+    def inProgressOrder(data):
+        print("Doing something fancy")
 
-    def notifyServiceOrderStatus():
+    def notifyServiceOrderStatus(state):
         print('placeholder')
 
     def processServiceOrder():
@@ -40,8 +45,11 @@ if __name__ == '__main__':
     def partialServiceOrder():
         print
         
-    def validateServiceOrder(data):
+    def validateServiceOrder(data) -> bool:
         try:
             payload.ServiceOrder(**data)
         except:
             rejectServiceOrder(data)
+            return False
+            
+        return True
