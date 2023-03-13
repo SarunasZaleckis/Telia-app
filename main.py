@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 import service_order as payload
-import typing
+import os
 
 if __name__ == '__main__':
     print('Starting TMF Application')
-
+    
+    # Not used
+    originUrl = os.environ['ORIGIN_URL']
+    
     app = FastAPI()
     
     @app.post("/acceptServiceOrder")
